@@ -47,3 +47,9 @@ cobertura {
 checkstyle {
     toolVersion '8.17'
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'main.java.Library'
+    }
+}
