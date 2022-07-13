@@ -6,6 +6,7 @@ pipeline {
             steps {
                 cleanWs()
                 checkout scm
+                echo 'Branch name is: '
                 echo env.BRANCH_NAME
             }
         }
