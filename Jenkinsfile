@@ -8,6 +8,16 @@ pipeline {
                 checkout scm
             }
         }
+        stage ("test") {
+            when {
+                expression {
+                    BRANCH_NAME = 'master' || BRANCH_NAME = 'dev'
+                }
+            }
+            steps {
+                echo 'Test phase can be executed here'
+            }
+        }
         stage('Build') {
             steps {
                 rtGradleRun (
