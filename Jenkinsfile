@@ -2,12 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage ("config") {
+            steps {
+                echo 'Branch name is: '
+                echo env.BRANCH_NAME
+                echo "The current build number is ${env.BUILD_NUMBER}"
+            }
+        }
         stage ("cleanup") {
             steps {
                 cleanWs()
                 checkout scm
-                echo 'Branch name is: '
-                echo env.BRANCH_NAME
             }
         }
         stage ("test") {
