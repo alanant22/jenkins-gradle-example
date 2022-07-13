@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage ("cleanup") {
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Build') {
             steps {
                 rtGradleRun (
@@ -10,12 +16,6 @@ pipeline {
                     tasks: 'clean build',
                     switches: '--info --refresh-dependencies'
                 )
-            }
-        }
-        stage ("cleanup") {
-            steps {
-                cleanWs()
-                checkout scm
             }
         }
     }
