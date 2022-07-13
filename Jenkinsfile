@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage ("cleanup") {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Build') {
             steps {
                 rtGradleRun (
